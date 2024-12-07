@@ -1,21 +1,33 @@
-// script.js
-// Initialize GSAP
-gsap.from(".hero-title", { y: -50, opacity: 0, duration: 1.5 });
-gsap.from(".hero-subtitle", { y: 50, opacity: 0, duration: 1.5, delay: 0.5 });
-gsap.from(".btn", { scale: 0.8, opacity: 0, duration: 1, delay: 1 });
+// Register ScrollTrigger Plugin
+gsap.registerPlugin(ScrollTrigger);
 
-// Scroll-triggered animations
-const sections = document.querySelectorAll("section");
+// Animate sections as they scroll into view
+gsap.from(".hero-title", {
+  scrollTrigger: {
+    trigger: ".hero-title",
+    start: "top 90%",
+  },
+  opacity: 0,
+  y: -50,
+  duration: 1.5
+});
 
-sections.forEach((section) => {
-  gsap.from(section, {
-    scrollTrigger: {
-      trigger: section,
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-    y: 50,
-    opacity: 0,
-    duration: 1,
-  });
+gsap.from(".about", {
+  scrollTrigger: {
+    trigger: ".about",
+    start: "top 80%",
+  },
+  opacity: 0,
+  y: 30,
+  duration: 1
+});
+
+gsap.from(".contact", {
+  scrollTrigger: {
+    trigger: ".contact",
+    start: "top 90%",
+  },
+  opacity: 0,
+  y: 50,
+  duration: 1.5
 });
